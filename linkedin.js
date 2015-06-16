@@ -5,7 +5,7 @@ var _ = require('lodash-node')
  	  , casper = require('casper').create({verbose: true, logLevel: "info"});
 
 // var db = new Datastore({filename: 'linkedin.db', autoload: true})
-var URL_ROOT = "http://www.linkedin.com";
+var URL_ROOT = "https://www.linkedin.com";
 
 
 var terms = ["angularjs", "scala"];
@@ -16,7 +16,7 @@ var unvisited = []
 casper.cli.drop("cli");
 casper.cli.drop("casper-path");
 
-if (casper.cli.args.length === 0 && Object.keys(casper.cli.options).length < 3) {
+if (!casper.cli.has("u") || !casper.cli.has("p")) {
     casper.echo('usage: casperjs linkedin.js --u=username --p=password --terms=js,java --pages=30').exit();
 }
 
@@ -135,7 +135,8 @@ var terms = casper.cli.get("terms").split(",")
 var pages = casper.cli.get("pages") || 10;
 
 casper
-	.start(URL_ROOT + "/", loginStep) 
+	.userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36")
+	.start(URL_ROOT + "/nhome", loginStep) 
 	.then(addSearchLinksStep(pages, terms, null, null, null))
 	// .then(addSearchLinksStep(30, terms, null, topCompanyIds, null))
 	// .then(addSearchLinksStep(30, terms, null, null, topSchoolIds))

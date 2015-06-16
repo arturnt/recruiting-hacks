@@ -1,0 +1,22 @@
+{
+  "name": "linkedin-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "linkedin.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arturnt/recruiting-hacks.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arturnt/recruiting-hacks/issues"
+  },
+  "homepage": "https://github.com/arturnt/recruiting-hacks",
+  "dependencies": {
+    "lodash-node": "^3.6.0"
+  }
+}
